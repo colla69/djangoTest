@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Store
-from .forms import RawStoreForm
+from .models import Store, ProjectInfos
+from .forms import StoreForm
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -18,11 +18,6 @@ def second_view(request, *args, **kwargs):
 
 
 def project_view(request, *args, **kwargs):
-    form = ProjectInfoForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = ProjectInfoForm(request.POST or None)
-
     content = ProjectInfos.objects.all()
     print(content)
     ctx = {
@@ -32,12 +27,12 @@ def project_view(request, *args, **kwargs):
 
 
 def createstore_view(request, *args, **kwargs):
-    form = RawStoreForm()
+    form = StoreForm()
     if request.method == "POST":
-        form = RawStoreForm(request.POST)
+        form = StoreForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            Store.objects.create()
+            form.save()
+            form = StoreForm()
         else:
             print(form.errors)
     ctx = {

@@ -7,6 +7,9 @@ class Store(models.Model):
     desc = models.TextField()
     price = models.TextField()
 
+    def __str__(self):
+        return self.title
+
 
 class ProjectInfos(models.Model):
     name = models.TextField(db_column='Name', max_length=100)  # Field name made lowercase.
