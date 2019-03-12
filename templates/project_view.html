@@ -1,0 +1,9 @@
+{% extends "BaseView.html" %}
+
+{% block content %}
+
+    {%  for m in objList %}
+        <li>{{ m.name }}</li>
+    {% endfor %}
+
+{% endblock %}

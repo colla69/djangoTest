@@ -1,0 +1,8 @@
+{% extends "BaseView.html" %}
+
+{% block content %}
+<h3>homeView</h3>
+    <h4> welcome {{ request.user }}</h4>
+<br>
+autentication : {{ request.user.is_authenticated }}
+{% endblock %}

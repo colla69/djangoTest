@@ -1,0 +1,15 @@
+{% extends "BaseView.html" %}
+
+{% block content %}
+    <h3>Second View</h3>
+
+    context test <br>
+    contextInfo: {{ my_text }} <br>
+    contextNo: {{ my_number }} <br>
+
+    <ul>
+    {%  for m in mylist %}
+        <li>{{ m }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
